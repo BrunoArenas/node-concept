@@ -33,4 +33,6 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.resources = require(path.resolve(path.join('api', 'models', 'resource.js')))(sequelize, Sequelize);
+
 module.exports = db;
