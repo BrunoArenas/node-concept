@@ -2,6 +2,10 @@ require('dotenv').config();
 
 'use strict';
 
+const prometheus = require('prom-client');
+const collectDefaultMetrics = prometheus.collectDefaultMetrics;
+collectDefaultMetrics({ timeout: 5000 });
+
 const path = require('path');
 const express = require('express'),
   bodyParser = require('body-parser'),
