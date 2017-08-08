@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "concept_development",
-    "host": "localhost",
+    "host": "postgres",
     "dialect": "postgres",
     "protocol": "postgres"
   },
