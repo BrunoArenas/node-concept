@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "SET NODE_ENV=development && node api/index.js",
+    "start": "SET NODE_ENV=development && node api/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +18,9 @@
     "sequelize": "^4.4.2"
   },
   "devDependencies": {
-    "sequelize-cli": "^2.8.0",
     "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
     "mocha": "^3.5.0",
+    "sequelize-cli": "^2.8.0"
   }
 }
