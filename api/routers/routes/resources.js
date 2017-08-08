@@ -1,9 +1,10 @@
 'use strict';
 
 module.exports = (app, db) => {
-
+  const Resource = db.resources;
+  
   app.get('/resources', (req, res) => {
-    db.resources.findAll()
+    Resource.findAll()
       .then(resources => {
         res.json(resources);
       });
@@ -11,7 +12,7 @@ module.exports = (app, db) => {
 
   app.get('/resource/:id', (req, res) => {
     const id = req.params.id;
-    db.resources.findOne({
+    Resource.findOne({
       where: { id: id }
     })
     .then(resource => {
@@ -22,7 +23,7 @@ module.exports = (app, db) => {
   app.post('/resource', (req, res) => {
     const name = req.body.name;
     const description = req.body.description;
-    db.resources.create({
+    Resource.create({
       name: name,
       description: description
     })
@@ -34,11 +35,10 @@ module.exports = (app, db) => {
     });
   });
 
-  // PATCH single resource
   app.patch('/resource/:id', (req, res) => {
     const id = req.params.id;
     const updates = req.body.updates;
-    db.resources.find({
+    Resource.find({
       where: { id: id }
     })
     .then(resource => {
@@ -49,7 +49,7 @@ module.exports = (app, db) => {
 
   app.delete('/resource/:id', (req, res) => {
     const id = req.params.id;
-    db.resources.destroy({
+    Resource.destroy({
       where: { id: id }
     })
     .then(deletedOwner => {
