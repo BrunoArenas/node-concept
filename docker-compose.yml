@@ -1,0 +1,19 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://postgres:postgres@db/concept_development
+    depends_on:
+      - db
+  db:
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=concept_development
+      - POSTGRES_PASSWORD=postgres
