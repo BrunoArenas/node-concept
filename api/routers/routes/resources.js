@@ -2,7 +2,7 @@
 
 module.exports = (app, db) => {
   const Resource = db.resources;
-  
+
   app.get('/resources', (req, res) => {
     Resource.findAll()
       .then(resources => {
@@ -27,8 +27,8 @@ module.exports = (app, db) => {
       name: name,
       description: description
     })
-    .then(newOwner => {
-      res.json(`${newOwner} Created Succesfully`);
+    .then(newResource => {
+      res.json(`${newResource} Created Succesfully`);
     })
     .catch(resource => {
       res.json(resource);

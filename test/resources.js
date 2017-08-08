@@ -15,17 +15,14 @@ describe('Resources', () => {
     Resource.findAll()
             .then(resources => {
               resources.map(resource => {
-                resource.destroy()
-                        .then(deletedOwner => {
-                          done();
-                        });
+                resource.destroy();
               })
               done();
             });
   });
 
   describe('/GET resources', () => {
-      it('it should GET all the resources', (done) => {
+      it('returns all the resources', (done) => {
         chai.request(app)
             .get('/resources')
             .end((err, res) => {
@@ -38,15 +35,23 @@ describe('Resources', () => {
   });
 
   describe('/GET resource/:id', () => {
-      it('it should GET all the resources', (done) => {
-        chai.request(app)
-            .get('/resources')
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.be.eql(0);
-              done();
-            });
-      });
+    const modelID = 1000;
+
+    it('returns resource with :id', (done) => {
+      Resource.create({
+        id: modelID,
+        name: 'TESTE',
+        description: 'DESCRICAO'
+      })
+
+      chai.request(app)
+          .get(`/resource/${modelID}`)
+          .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a('object');
+              res.body.name.should.be.eq('TESTE');
+            done();
+          });
+    });
   });
 });
