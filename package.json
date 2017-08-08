@@ -4,21 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "SET NODE_ENV=development && node api/index.js",
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "chai": "^4.1.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
-    "mocha": "^3.5.0",
     "morgan": "^1.8.2",
     "pg": "^7.1.0",
     "sequelize": "^4.4.2"
   },
   "devDependencies": {
-    "sequelize-cli": "^2.8.0"
+    "sequelize-cli": "^2.8.0",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
   }
 }
