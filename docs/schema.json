@@ -1,0 +1,168 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "resource": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Resource",
+      "description": "Node Concept API",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of resource",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of resource",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "description of resource",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/resource/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when resource was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when resource was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new resource.",
+          "href": "/resources",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing resource.",
+          "href": "/resources/{(%23%2Fdefinitions%2Fresource%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing resource.",
+          "href": "/resources/{(%23%2Fdefinitions%2Fresource%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing resources.",
+          "href": "/resources",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing resource.",
+          "href": "/resources/{(%23%2Fdefinitions%2Fresource%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "description": {
+                "type": [
+                  "text"
+                ]
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/resource/definitions/created_at"
+        },
+        "description": {
+          "$ref": "#/definitions/resource/definitions/description"
+        },
+        "id": {
+          "$ref": "#/definitions/resource/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/resource/definitions/name"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/resource/definitions/updated_at"
+        }
+      }
+    }
+  },
+  "properties": {
+    "resource": {
+      "$ref": "#/definitions/resource"
+    }
+  },
+  "description": "Node Concept API",
+  "id": "node-concept",
+  "links": [
+    {
+      "href": "http://localhost:5000",
+      "rel": "self"
+    }
+  ],
+  "title": "Node Concept"
+}

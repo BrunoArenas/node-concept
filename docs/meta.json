@@ -1,0 +1,9 @@
+{
+ "description": "Node Concept API",
+ "id": "node-concept",
+ "links": [{
+   "href": "http://localhost:5000",
+   "rel": "self"
+ }],
+ "title": "Node Concept"
+}
