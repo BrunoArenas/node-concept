@@ -54,4 +54,21 @@ describe('Resources', () => {
           });
     });
   });
+
+  it('creates a resource ', (done) => {
+    let resource = {
+        name: "NAME",
+        description: "DSK"
+    }
+    chai.request(app)
+    .post('/resource')
+    .send(resource)
+    .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('name');
+        res.body.should.have.property('description');
+      done();
+    });
+  });
 });

@@ -28,7 +28,7 @@ module.exports = (app, db) => {
       description: description
     })
     .then(newResource => {
-      res.json(`${newResource} Created Succesfully`);
+      res.json(newResource);
     })
     .catch(resource => {
       res.json(resource);
